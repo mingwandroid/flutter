@@ -165,7 +165,11 @@ function shared::execute() {
   DART_SDK_PATH="$FLUTTER_ROOT/bin/cache/dart-sdk"
 
   DART="$DART_SDK_PATH/bin/dart"
-  PUB="$DART_SDK_PATH/bin/pub"
+  if [[ $(uname) =~ M.* ]]; then
+    PUB="$DART_SDK_PATH/bin/pub.bat"
+  else
+    PUB="$DART_SDK_PATH/bin/pub"
+  fi
 
   # If running over git-bash, overrides the default UNIX executables with win32
   # executables
